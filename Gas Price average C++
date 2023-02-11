@@ -1,0 +1,97 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+using namespace std;
+
+int main() {
+    fstream file;
+    vector<double>gasPrice;
+    double i;
+    int t; // counter for loop
+    double lowAvg; //low price avg
+    double highAvg; // high price avg
+    int lweek = 0; // low week of the year
+    int hweek = 0; // high week of the year
+    string lmonth;
+    string hmonth;
+
+
+    file.open("1994_Weekly_Gas_Averages.txt");
+    while(file >> i)
+    {
+        gasPrice.push_back(i);
+    }
+    lowAvg = gasPrice.at(0);
+    highAvg = gasPrice.at(0);
+    for(t = 0; t < gasPrice.size(); ++t) {
+        if (lowAvg > gasPrice.at(t)) {
+            lowAvg = gasPrice.at(t); // low price avg
+            lweek = t + 1; // week of the year
+            if (lweek <= 4) {
+                lmonth = "Janurary";
+            } else if (lweek <= 8) {
+                lmonth = "Febuary";
+            } else if (lweek <= 12) {
+                lmonth = "March";
+            } else if (lweek <= 16) {
+                lmonth = "April";
+            } else if (lweek <= 20) {
+                lmonth = "May";
+            } else if (lweek <= 24) {
+                lmonth = "June";
+            } else if (lweek <= 28) {
+                lmonth = "July";
+            } else if (lweek <= 32) {
+                lmonth = "August";
+            } else if (lweek <= 36) {
+                lmonth = "September";
+            } else if (lweek <= 40) {
+                lmonth = "October";
+            } else if (lweek <= 44) {
+                lmonth = "November";
+            } else if (lweek <= 48) {
+                lmonth = "December";
+            }
+        }
+        if (highAvg < gasPrice.at(t)) {
+            highAvg = gasPrice.at(t);
+            hweek = t + 1; // week of the year
+            if (hweek <= 4) {
+                hmonth = "Janurary";
+            } else if (hweek <= 8) {
+                hmonth = "Febuary";
+            } else if (hweek <= 12) {
+                hmonth = "March";
+            } else if (hweek <= 16) {
+                hmonth = "April";
+            } else if (hweek <= 20) {
+                hmonth = "May";
+            } else if (hweek <= 24) {
+                hmonth = "June";
+            } else if (hweek <= 28) {
+                hmonth = "July";
+            } else if (hweek <= 32) {
+                hmonth = "August";
+            } else if (hweek <= 36) {
+                hmonth = "September";
+            } else if (hweek <= 40) {
+                hmonth = "October";
+            } else if (hweek <= 44) {
+                hmonth = "November";
+            } else if (hweek <= 48) {
+                hmonth = "December";
+            }
+        }
+    }
+        //Low
+        cout << "Lowest Price Avg: " << lowAvg << endl;
+        cout << "Lowest Price week: " << lweek << endl;
+        cout << "Lowest Price month: " << lmonth << endl;
+
+        //high
+        cout << "Highest Price Avg: " << highAvg << endl;
+        cout << "Highest Price week: " << hweek << endl;
+        cout << "Highest Price month: " << hmonth << endl;
+
+        return 0;
+    }
